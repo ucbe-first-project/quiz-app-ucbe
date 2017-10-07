@@ -43,7 +43,7 @@ var questions = {
     question: "Which continent is largest in terms of land mass?", answers: {
       a: " Asia",
       b: " Europe",
-      c: " Africs",
+      c: " Africa",
       d: " North America"
     },
     answer: "a",
@@ -258,6 +258,7 @@ var lastAnswerCorrect = false;
 $("#reset").hide();
 $("#submit").hide();
 $(".account-detail").hide();
+$("#quizprogressbar").hide();
 
 
 
@@ -310,12 +311,15 @@ function buildQuiz(){
     	console.log(i);
       console.log(currentQuestion[i]);
     //		answers = [];
+      var idx = 0;
     		for (letter in currentQuestion[i].answers) {
-              answers.push("<li><label>"
-    			+ '<input type="radio" name=question' + i +
-              ' value="'+letter+'" class="question">'
-				+ "  " + letter + " : "
-				+ currentQuestion[i].answers[letter]+ "</label></li>")
+              answers.push("<div class='quizItem'><li>"
+    			+ '<input type="radio" id=question' + idx + ' name=question' + i +
+              ' value="'+letter+'" class="question">' + 
+              '<label for="question' + idx +'">'
+              +'<span> </span>' +
+				'<p class="answertext">' + currentQuestion[i].answers[letter]+ "</p></label></li></div>");
+              idx++;
     		};
 
     		answers.push("</ul>");
@@ -329,6 +333,7 @@ function buildQuiz(){
 		quiz.innerHTML = output.join('');
 		console.log(output.join(''));
 
+   buildProgress();
 
       //};
 };
@@ -482,6 +487,9 @@ $("#start-geo-quiz").on("click", function(){
   console.log("started quiz");
   $("#submit").show();
   $("#reset").show();
+  $("#start-bio-quiz").hide();
+  $("#start-history-quiz").hide();
+  $("#quizprogressbar").show();
 });
 
 $("#start-bio-quiz").on("click", function(){
@@ -490,6 +498,9 @@ $("#start-bio-quiz").on("click", function(){
   console.log("started quiz");
   $("#submit").show();
   $("#reset").show();
+  $("#start-geo-quiz").hide();
+  $("#start-history-quiz").hide();
+  $("#quizprogressbar").show();
 });
 
 $("#start-history-quiz").on("click", function(){
@@ -498,6 +509,9 @@ $("#start-history-quiz").on("click", function(){
   console.log("started quiz");
   $("#submit").show();
   $("#reset").show();
+  $("#start-geo-quiz").hide();
+  $("#start-bio-quiz").hide();
+  $("#quizprogressbar").show();
 });
 
 
@@ -508,6 +522,11 @@ $("#reset").on("click", function(){
   $("#submit").hide();
   currentQuestion = [];
   numCorrect = 0;
+  $("#start-bio-quiz").show();
+  $("#start-history-quiz").show();
+  $("#start-geo-quiz").show();
+  questionIndex = 0;
+  buildProgress();
 });
 
 // Get the modal for quiz result display
@@ -546,3 +565,23 @@ $("#login-button").on("click", function(){
 
     $(".login-detail").slideToggle();
 });
+
+function buildProgress() {
+  if (currentQuestion.length !== 0){
+    var minValue = 0;
+    var maxValue = currentQuestion.length;
+    var valueNow = questionIndex;
+    var percentDone = (100. * valueNow /  maxValue);
+  }
+  else {
+    var minValue = 0;
+    var maxValue = 1;
+    var valueNow = 0;
+    var percentDone = 0;
+  }
+
+    $("#quizprogress").attr("aria-valuemin", minValue);
+    $("#quizprogress").attr("aria-valuemax", maxValue);
+    $("#quizprogress").attr("aria-valuenow", valueNow).css("width", percentDone + '%');
+
+};
