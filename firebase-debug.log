@@ -1,0 +1,36 @@
+[debug] [2017-10-07T16:51:49.099Z] ----------------------------------------------------------------------
+[debug] [2017-10-07T16:51:49.101Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2017-10-07T16:51:49.102Z] CLI Version:   3.12.0
+[debug] [2017-10-07T16:51:49.102Z] Platform:      darwin
+[debug] [2017-10-07T16:51:49.102Z] Node Version:  v5.12.0
+[debug] [2017-10-07T16:51:49.103Z] Time:          Sat Oct 07 2017 09:51:49 GMT-0700 (PDT)
+[debug] [2017-10-07T16:51:49.103Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-10-07T16:51:49.114Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-07T16:51:49.114Z] > authorizing via signed-in user
+[debug] [2017-10-07T16:51:49.116Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-10-07T16:51:49.116Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/DK-c3-7pvWLDq0a49Qrwua4PXwpIwEsfaDI8QVnFyZY',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Oct 07 2017 09:51:49 GMT-0700 (PDT)
+[debug] [2017-10-07T16:51:49.403Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-07T16:51:49.407Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/quiz-app-64dbc  
+ Sat Oct 07 2017 09:51:49 GMT-0700 (PDT)
+[debug] [2017-10-07T16:51:49.928Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-07T16:51:49.929Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/quiz-app-64dbc/tokens  
+ Sat Oct 07 2017 09:51:49 GMT-0700 (PDT)
+[debug] [2017-10-07T16:51:50.625Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/ppenton/quiz-app-ucbe'...
+[info] 
+[debug] [2017-10-07T16:51:50.628Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/quiz-app-64dbc  
+ Sat Oct 07 2017 09:51:50 GMT-0700 (PDT)
+[debug] [2017-10-07T16:51:51.341Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-07T16:51:51.342Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1002575042876/clients/_:getWebAppConfig  
+ Sat Oct 07 2017 09:51:51 GMT-0700 (PDT)
+[debug] [2017-10-07T16:51:51.911Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
