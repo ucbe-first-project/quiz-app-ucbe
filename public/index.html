@@ -1,52 +1,41 @@
 <!DOCTYPE html>
-
 <html lang="en-us">
-
-<head>
-    <meta charset="UTF-8">
-    <title>QuizTime</title>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://use.fontawesome.com/bc7aa1a3d0.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
-    <!-- update the firebase version number as needed -->
-    <script defer src="/__/firebase/4.4.0/firebase-app.js"></script>
-    <!-- include only the firebase features as you need -->
-    <script defer src="/__/firebase/4.4.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.4.0/firebase-database.js"></script>
-    <script defer src="/__/firebase/4.4.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/4.4.0/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired firebase features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyD73WBIlPYp8IZgQlogpWLbVe-O1PSLLL8",
-            authDomain: "quiz-app-64dbc.firebaseapp.com",
-            databaseURL: "https://quiz-app-64dbc.firebaseio.com",
-            projectId: "quiz-app-64dbc",
-            storageBucket: "quiz-app-64dbc.appspot.com",
-            messagingSenderId: "1002575042876"
-        };
-        firebase.initializeApp(config);
-    </script>
-
-    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
-</head>
-
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>QuizTime</title>
+        <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- bootstrap and custom CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://use.fontawesome.com/bc7aa1a3d0.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <!-- update the firebase version number as needed -->
+        <script defer src="/__/firebase/4.4.0/firebase-app.js"></script>
+        <!-- firebase features -->
+        <script defer src="/__/firebase/4.4.0/firebase-auth.js"></script>
+        <script defer src="/__/firebase/4.4.0/firebase-database.js"></script>
+        <script defer src="/__/firebase/4.4.0/firebase-messaging.js"></script>
+        <script defer src="/__/firebase/4.4.0/firebase-storage.js"></script>
+        <!-- initialize the SDK after all desired firebase features are loaded -->
+        <script defer src="/__/firebase/init.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyD73WBIlPYp8IZgQlogpWLbVe-O1PSLLL8",
+                authDomain: "quiz-app-64dbc.firebaseapp.com",
+                databaseURL: "https://quiz-app-64dbc.firebaseio.com",
+                projectId: "quiz-app-64dbc",
+                storageBucket: "quiz-app-64dbc.appspot.com",
+                messagingSenderId: "1002575042876"
+            };
+            firebase.initializeApp(config);
+        </script>
+    </head>
 <body>
-
 <div class="jumbotron" id="jumbotron">
     <h1 class="text-center" id="heading-background">Can you pass the 8th grade?</h1>
     <h3 class="text-center" id="sub-heading-background">Login and select a subject to begin</h3>
@@ -57,140 +46,119 @@
         <i class="fa fa-graduation-cap fa-4x animated infinite jello" aria-hidden="true"></i>
         <i class="fa fa-pencil-square-o fa-4x animated infinite rubberBand" aria-hidden="true"></i>
     </div>
-
 </div>
-
 <div class="container">
     <div class="row">
-            <div class="col-md-0" id="left-side-panel"></div>
-            <div class="col-md-9" id="middle-panel">
-            <div class="row">
-                <div class="progress" id="quizprogressbar">
-                    <div class="progress-bar" id="quizprogress" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                     <span class="sr-only">45% Complete</span>
-                  </div>
+        <div class="col-md-0" id="left-side-panel"></div>
+        <div class="col-md-9" id="middle-panel">
+            <div class="panel panel-default">
+              <div class="panel-body">
+              <div class="row">
+                <button type="button" class="btn btn-primary btn-lg btn-success" id="start-geo-quiz">Geography Quiz</button>
+                <button type="button" class="btn btn-primary btn-lg btn-success" id="start-bio-quiz">Biology Quiz</button>
+                <button type="button" class="btn btn-primary btn-lg btn-success" id="start-history-quiz">US History Quiz</button>
                 </div>
-            </div>
-
-
-            <div class="row">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="row">
-                    <button type="button" class="btn btn-primary btn-lg btn-success" id="start-geo-quiz">Geography</button>
-                    <button type="button" class="btn btn-primary btn-lg btn-success" id="start-bio-quiz">Biology</button>
-                    <button type="button" class="btn btn-primary btn-lg btn-success" id="start-history-quiz">US History</button>
-                    </div>
-                    <div class="row">
-                    </div>
-                    <div id="quiz"></div>
-                    <br><br>
-                    <button type="button" class="btn btn-primary btn-lg btn-success btn-info" id="submit">Submit Answers</button>
-                    <button type="button" class="btn btn-primary btn-lg btn-success btn-info" id="reset">Reset Quiz</button>
-                        <!-- The Modal -->
-                        <div id="answer-summary" class="modal">
-
-                          <!-- Modal content -->
-                          <div class="modal-content">
+                <div class="row">
+                </div>
+                <div id="quiz"></div>
+                <br><br>
+                <button type="button" class="btn btn-primary btn-lg btn-success btn-info" id="submit">Submit Answers</button>
+                <button type="button" class="btn btn-primary btn-lg btn-success btn-info" id="reset">Reset Quiz</button>
+                    <!-- The Modal -->
+                    <div id="answer-summary" class="modal">
+                      <!-- Modal content -->
+                        <div class="modal-content">
                             <span class="close">&times;</span>
                             <p id="quiz-result">Quiz Results</p>
                             <div id="results">Score</div>
                             <br>
                             <div id="wiki-content"></div>
                             <div class="row">
-                                <div class="col-md-5"></div>
-                                <div class="col-md-5" id="gif-content"></div>
-                                <div class="col-md-2"></div>
+                            <div class="col-md-5"></div>
+                            <div class="col-md-5" id="gif-content"></div>
+                            <div class="col-md-2"></div>
                             </div>
-                          </div>
                         </div>
-                  </div>
-                </div>
-            </div>
-            </div>
-            <div class="col-md-3" id="right-side-panel">
-                <div id="panel-heading">
-                    <ul class="nav nav-pills nav-stacked">
-                    <li role="presentation" class="active" id="login-button"><a id="login-sidebar" href="#">Login/Signup</a></li>
-                        <div class="panel panel-default login-detail">
-                        <div class="panel-heading login-detail">
-                        <h3 class="panel-title login-detail"></h3>
-                        </div>
-                        <div class="panel-body signup-detail">
-                            <form class="form">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        Email Address:
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <input type="email" id="txtEmail">
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        Password:
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <input type="password" id="txtPassword">
-                                        <br><br>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xs-2">
-                                        <button id="btnLogin" class="btn btn-action btn-warning" type="button">
-                                            Login
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-2">
-                                        <button id="btnSignUp" class="btn btn-secondary btn-warning" type="button">
-                                            Sign Up
-                                        </button>
-                                        <br>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-2">
-                                        <button id="btnLogout" class="btn btn-action hide btn-warning" type="button">
-                                            Logout
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                      </div>
                     </div>
-
-                    <li role="presentation" class="active" id="account-button"><a href="#" id="account-sidebar">Account</a>
-                        <div class="panel panel-default account-detail">
-                        <div class="panel-heading account-detail">
-                        <h3 class="panel-title account-detail">Welcome!</h3>
-                        </div>
-                        <div class="panel-body account-detail">
-                        Your Scores:
-                      </div>
-                    </div>
-                    </li>
-                    <li role="presentation" class="active"><a id="quiz-sidebar"href="https://quiz-app-64dbc.firebaseapp.com/quiz.html">Quizzes Home</a></li>
-                    </ul>
-                </div>
-                <div id="display"></div>
-                
+              </div>
             </div>
         </div>
+        <div class="col-md-3" id="right-side-panel">
+            <div id="panel-heading">
+                <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="active" id="login-button"><a href="#">Login/Signup</a></li>
+                    <div class="panel panel-default login-detail">
+                    <div class="panel-heading login-detail">
+                    <h3 class="panel-title login-detail"></h3>
+                    </div>
+                    <div class="panel-body signup-detail">
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    Email Address:
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="email" id="txtEmail">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    Password:
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="password" id="txtPassword">
+                                    <br><br>
+                                </div>
+                            </div>
+                            <div id="authMessage"></div>
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <button id="btnLogin" class="btn btn-action btn-warning" type="button">
+                                        Login
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <button id="btnSignUp" class="btn btn-secondary btn-warning" type="button">
+                                        Sign Up
+                                    </button>
+                                    <br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <button id="btnLogout" class="btn btn-action btn-warning hide" type="button">
+                                        Logout
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                  </div>
+                </div>
+                <li role="presentation" class="active hide" id="account-button"><a href="#">Account</a>
+                    <div class="panel panel-default account-detail">
+                        <div class="panel-heading account-detail">
+                            <h3 class="panel-title account-detail">Welcome!</h3>
+                        </div>
+                        <div class="panel-body account-detail">
+                            Your Scores:
+                        </div>
+                    </div>
+                </li>
+                <!-- <li role="presentation" class="active">
+                    <a href="https://quiz-app-64dbc.firebaseapp.com/">Quizzes Home</a>
+                </li> -->
+            </div>
+            <div id="display"></div>
+        </div>
+    </div>
 </div>
-
 <script src="assets/javascript/quiz.js"></script>
 <script src="assets/javascript/logic.js"></script>
-
 </body>
-
 </html>
