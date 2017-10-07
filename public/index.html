@@ -3,31 +3,26 @@
 <html lang="en-us">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>QuizTime</title>
-
+    <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    <!-- bootstrap and custom CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://use.fontawesome.com/bc7aa1a3d0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
     <!-- update the firebase version number as needed -->
     <script defer src="/__/firebase/4.4.0/firebase-app.js"></script>
-    <!-- include only the firebase features as you need -->
+    <!-- firebase features -->
     <script defer src="/__/firebase/4.4.0/firebase-auth.js"></script>
     <script defer src="/__/firebase/4.4.0/firebase-database.js"></script>
     <script defer src="/__/firebase/4.4.0/firebase-messaging.js"></script>
     <script defer src="/__/firebase/4.4.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired firebase features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
     <script>
         // Initialize Firebase
@@ -41,8 +36,6 @@
         };
         firebase.initializeApp(config);
     </script>
-
-    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
 </head>
 
 <body>
@@ -178,12 +171,12 @@
                         Your Scores:
                       </div>
                     </div>
-                    </li>
+                    <!-- </li>
                     <li role="presentation" class="active"><a id="quiz-sidebar"href="https://quiz-app-64dbc.firebaseapp.com/quiz.html">Quizzes Home</a></li>
-                    </ul>
+                    </ul> -->
                 </div>
                 <div id="display"></div>
-                
+
             </div>
         </div>
 </div>
